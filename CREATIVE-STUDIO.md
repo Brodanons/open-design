@@ -1,0 +1,16 @@
+# Creative Studio in OpenDesign
+
+The `/` and `/creative-studio` workspace adds editable references, concept, storyboard, deliverables and postproduction stages to this fork. Acceptance progresses in order; edits revoke affected downstream acceptance. Drafts persist in the browser and can be exported/imported. Importing a backup requires reviewing acceptance again. File selections are session-only until transferred.
+
+**Create production project** pins the bundled `creative-studio-production` plugin and transfers the brief, draft JSON and selected reference/handbook files through OpenDesign's existing project/upload APIs. It does not automatically start a model or spend credits. Open the resulting project and ask the director to read `creative-brief.md`. Production chat uses OpenDesign's existing configured agent/API connection. The existing hosted Creative Studio remains separately available; this is not a replacement of its hosted storage or account connection.
+
+The asset catalogs are HyperFrames, Remotion SFX/transitions, CapCut materials, Canva Brand Templates, Mixkit and LottieFiles. The production skill requires exact items, license/format checks and evidence of application. External account searches need actual configured connectors; catalog links alone do not provide authorization. Remotion components and Lottie JSON require compatible rendering. The local renderer can create an MP4 without a generative API.
+
+Seven additional OpenRouter media models are registered in both web and daemon catalogs: four Gemini image models, Seedance 2.5, Hailuo 3 and Grok Imagine Video 1.5. They are paid options, not free test models. OpenRouter image editing now transmits the supplied reference-image bytes. Mocked tests verify the request and response path; paid model output quality has not been tested. Credentials remain in OpenDesign's own settings; no hosted Studio credentials are copied.
+
+The bundled carousel workflow adapts the MIT-licensed carousel-writer from `social-media-skills/skills`, pinned at `f28cef2b7067ec64e79c9d85421c022c06659e03`. Its retained license and slide-craft reference live with the plugin. Private course material and the user's handbook must stay in private project storage, not in this public fork.
+
+Use the repository's `pnpm tools-dev` lifecycle and the root AGENTS.md data-directory contract. The sample authoring and export-check scripts take an absolute project output directory. They assemble a fictional Pause Coffee campaign with existing Lucide vector artwork, GSAP motion and a CC0 Remotion recording; no generative service is called. Video rendering uses OpenDesign's native HyperFrames media dispatcher after scaffolding. The result includes MP4, PNGs, SVG masters, PDF, caption/alt text and provenance. This sample does not claim a Canva design, Photoshop document or CapCut timeline was created.
+
+Validation: focused stage-acceptance tests, mocked OpenRouter adapter tests, real local Studio video/static/carousel production tests, full MP4 decoding/audio-stream and image dimension checks, visual contact-sheet review, repository guard and type checks. See the delivered production-checks report for observed results and remaining deployment limitations.
+

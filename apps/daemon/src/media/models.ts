@@ -119,6 +119,10 @@ export const IMAGE_MODELS: MediaModel[] = [
   { id: 'openai/gpt-image-1.5', label: 'openai/gpt-image-1.5', hint: 'ImageRouter · routed GPT Image', provider: 'imagerouter', caps: ['t2i'] },
   { id: 'black-forest-labs/FLUX-1.1-pro', label: 'FLUX-1.1-pro', hint: 'ImageRouter · Black Forest Labs', provider: 'imagerouter', caps: ['t2i'] },
 
+  { id: 'openrouter/google/gemini-3.1-flash-image', label: 'Gemini 3.1 Flash Image (OR)', hint: 'OpenRouter · image creation and reference editing · paid', provider: 'openrouter', caps: ['t2i', 'i2i'] },
+  { id: 'openrouter/google/gemini-3-pro-image', label: 'Gemini 3 Pro Image (OR)', hint: 'OpenRouter · image creation and reference editing · paid', provider: 'openrouter', caps: ['t2i', 'i2i'] },
+  { id: 'openrouter/google/gemini-3.1-flash-lite-image', label: 'Gemini 3.1 Flash Lite Image (OR)', hint: 'OpenRouter · image creation and reference editing · paid', provider: 'openrouter', caps: ['t2i', 'i2i'] },
+  { id: 'openrouter/google/gemini-nano-banana-2.1', label: 'Nano Banana 2.1 (OR)', hint: 'OpenRouter · image creation and reference editing · paid', provider: 'openrouter', caps: ['t2i', 'i2i'] },
   { id: 'openrouter/google/gemini-2.5-flash-image', label: 'gemini-flash-image (OR)', hint: 'OpenRouter · Gemini', provider: 'openrouter', caps: ['t2i'] },
   { id: 'openrouter/black-forest-labs/flux-1.1-pro', label: 'flux-1.1-pro (OR)', hint: 'OpenRouter · BFL', provider: 'openrouter', caps: ['t2i'] },
   { id: 'openrouter/recraft/recraft-v3', label: 'recraft-v3 (OR)', hint: 'OpenRouter · Recraft', provider: 'openrouter', caps: ['t2i'] },
@@ -165,6 +169,9 @@ export const VIDEO_MODELS: MediaModel[] = [
   { id: 'grok-imagine-video', label: 'grok-imagine-video', hint: 'xAI · 720p t2v + i2v + native audio', provider: 'grok', caps: ['t2v', 'i2v', 'audio'] },
 
   // OpenRouter video models.
+  { id: 'openrouter/bytedance/seedance-2.5', label: 'Seedance 2.5 (OR)', hint: 'OpenRouter · ByteDance · paid', provider: 'openrouter', caps: ['t2v', 'i2v'] },
+  { id: 'openrouter/minimax/hailuo-3', label: 'Hailuo 3 (OR)', hint: 'OpenRouter · MiniMax · paid', provider: 'openrouter', caps: ['t2v', 'i2v', 'audio'] },
+  { id: 'openrouter/x-ai/grok-imagine-video-1.5', label: 'Grok Imagine Video 1.5 (OR)', hint: 'OpenRouter · xAI · paid', provider: 'openrouter', caps: ['t2v', 'i2v', 'audio'] },
   { id: 'openrouter/bytedance/seedance-2.0:1080p', label: 'seedance-2.0 1080p (OR)', hint: 'OpenRouter · ByteDance · 1080p', provider: 'openrouter', caps: ['t2v', 'i2v'], default: true },
   { id: 'openrouter/bytedance/seedance-2.0', label: 'seedance-2.0 720p (OR)', hint: 'OpenRouter · ByteDance · 720p', provider: 'openrouter', caps: ['t2v', 'i2v'] },
   { id: 'openrouter/bytedance/seedance-2.0:480p', label: 'seedance-2.0 480p (OR)', hint: 'OpenRouter · ByteDance · 480p', provider: 'openrouter', caps: ['t2v', 'i2v'] },

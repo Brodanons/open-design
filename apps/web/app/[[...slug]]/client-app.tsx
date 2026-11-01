@@ -56,5 +56,10 @@ const App = dynamic(() => import('../../src/App').then((m) => m.App), {
 });
 
 export function ClientApp() {
-  return <App />;
+  return <RoutedApp />;
+}
+
+const Studio = dynamic(() => import('../../src/creative-studio/CreativeStudio').then(m => m.CreativeStudio), {ssr: false});
+function RoutedApp() {
+  return typeof window !== 'undefined' && ['/', '/creative-studio'].includes(window.location.pathname) ? <Studio /> : <App />;
 }

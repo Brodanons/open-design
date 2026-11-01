@@ -1,0 +1,18 @@
+{
+  "$schema": "https://open-design.ai/schemas/plugin.v1.json",
+  "specVersion": "1.0.0",
+  "name": "creative-studio-production",
+  "title": "Creative Studio Production",
+  "version": "0.1.0",
+  "description": "Source-first concept, storyboard, video, static image and carousel production with editable handoffs.",
+  "license": "Apache-2.0",
+  "tags": ["creative-studio", "carousel", "video", "static-images"],
+  "compat": {"agentSkills": [{"path": "./SKILL.md"}]},
+  "od": {
+    "kind": "skill",
+    "taskKind": "new-generation",
+    "useCase": {"query": "Read creative-brief.md and the attached handbook. Develop the next unaccepted stage, then produce the accepted deliverables using existing libraries and the brief's budget."},
+    "context": {"skills": [{"path": "./SKILL.md"}], "atoms": ["discovery-question-form", "todo-write", "file-write", "live-artifact", "critique-theater"]},
+    "capabilities": ["prompt:inject", "fs:write", "subprocess"]
+  }
+}

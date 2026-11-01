@@ -102,6 +102,23 @@ describe('openrouter video generation', () => {
 
   // ─── tests ────────────────────────────────────────────────────────
 
+  it('sends actual reference bytes to OpenRouter image editing rather than silently dropping them', async () => {
+    const png = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aewoAAAAASUVORK5CYII=', 'base64');
+    const projectDir = path.join(projectsRoot, 'project-1');
+    await mkdir(projectDir, { recursive: true });
+    await writeFile(path.join(projectDir, 'reference.png'), png);
+    let submitted: any;
+    globalThis.fetch = vi.fn(async (_url, init) => {
+      submitted = JSON.parse(String(init?.body));
+      return jsonResp({choices:[{message:{images:[{image_url:{url:'data:image/png;base64,'+png.toString('base64')}}]}}]});
+    }) as typeof fetch;
+    await generateMedia({...argsWithPaths(), surface:'image', model:'openrouter/google/gemini-3.1-flash-image', image:'reference.png', output:'edited.png'});
+    expect(submitted.model).toBe('google/gemini-3.1-flash-image');
+    expect(submitted.messages[0].content).toEqual(expect.arrayContaining([
+      expect.objectContaining({type:'image_url',image_url:{url:'data:image/png;base64,'+png.toString('base64')}}),
+    ]));
+  });
+
   it('completes a submit → poll → download cycle for t2v', async () => {
     const fetchMock = vi.fn()
       // 1. Submit

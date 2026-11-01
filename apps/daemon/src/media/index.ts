@@ -1904,7 +1904,17 @@ async function renderOpenRouterImage(
     messages: [
       {
         role: 'user',
-        content: ctx.prompt || 'A high-quality reference image.',
+        content: ctx.imageRefs.length > 0
+          ? [
+              { type: 'text', text: ctx.prompt || 'Edit the supplied reference images.' },
+              ...ctx.imageRefs.map(ref => ({ type: 'image_url', image_url: { url: ref.dataUrl } })),
+            ]
+          : ctx.imageRef
+            ? [
+                { type: 'text', text: ctx.prompt || 'Edit the supplied reference image.' },
+                { type: 'image_url', image_url: { url: ctx.imageRef.dataUrl } },
+              ]
+            : ctx.prompt || 'A high-quality reference image.',
       },
     ],
     modalities,
