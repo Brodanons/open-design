@@ -1,6 +1,13 @@
 import {describe,it,expect} from 'vitest';
-import {blankDraft,canApprove,parseDraft,revise,packet} from '../src/creative-studio/workflow';
+import {blankDraft,canApprove,parseDraft,revise,packet,draftBasis,parseStageResult} from '../src/creative-studio/workflow';
 describe('Creative Studio acceptance and transfer',()=>{
+  it('rejects mismatched director results and detects edits during a run',()=>{
+    expect(()=>parseStageResult({requestId:'old',stage:'Concept',text:'Old result'},'new','Concept')).toThrow();
+    expect(()=>parseStageResult({requestId:'new',stage:'Storyboard',text:'Wrong stage'},'new','Concept')).toThrow();
+    expect(parseStageResult({requestId:'new',stage:'Concept',text:'Draft concept'},'new','Concept')).toBe('Draft concept');
+    const d=blankDraft(); expect(draftBasis({...d,projectId:'created'})).toBe(draftBasis(d));
+    expect(draftBasis({...d,concept:'User changed direction'})).not.toBe(draftBasis(d));
+  });
   it('requires content and sequential acceptance',()=>{
     const d=blankDraft(); expect(canApprove(d,0)).toBe(false);
     d.raw='Coffee break'; d.concept='A quiet reset'; expect(canApprove(d,0)).toBe(true); expect(canApprove(d,1)).toBe(false);
