@@ -41,4 +41,3 @@ export function DirectorPanel({draft,step,prepare,onResult}:{draft:StudioDraft;s
   const prerequisite=step===0||draft.approved.includes(stages[step-1]!);
   return <section className="cs-handoff" aria-label="Director"><div><h2>Your director, in this workflow.</h2><p>Run your configured OpenDesign agent on the current stage. It reads the transferred brief and handbook, uses its connected creative tools, and returns an editable draft here. Paid generation stays off for these runs.</p><p role="status">{status}</p></div><button disabled={!!run||starting||!draft.raw.trim()||!prerequisite} onClick={start}>{starting?'Preparing…':run?'Director working…':step===4?'Create production draft':step===0?'Ask clarifying questions':'Draft '+stages[step]!.toLowerCase()}</button>{run&&<button onClick={cancel}>Stop director</button>}</section>;
 }
-
